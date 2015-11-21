@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Quora Helper",
+    "version": "0.1",
+
+    "description": "Firstly, It support you using keybinds j, k to view Quora.",
+
+    "author": "revir.qing@gmail.com",
+    "background": {
+        "script": "js/background/main.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.quora.com/*"
+            ],
+            "js": [
+                "bower_components/jquery/dist/jquery.min.js",
+                "js/content/main.js"
+            ]
+        }
+    ]
+}
+
