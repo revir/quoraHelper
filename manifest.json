@@ -3,7 +3,7 @@
     "name": "Quora Helper",
     "version": "0.1",
 
-    "description": "Firstly, It support you using keybinds j, k to view Quora.",
+    "description": "This extension helps you using j/k to move around on Quora.com, and using Enter to help you open comments.",
 
     "author": "revir.qing@gmail.com",
     "background": {
