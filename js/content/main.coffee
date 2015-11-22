@@ -27,10 +27,10 @@ getCurrentViewIndex = ->
     $views.each (index)->
         return if this.scrollHeight is 0
         itemOffset = $(this).offset()
-        if itemOffset.top is headerBottom
+        if Math.abs(itemOffset.top - headerBottom) < 3
             currentIndex = index
             return false
-        else if itemOffset.top > headerBottom
+        else if itemOffset.top >= (headerBottom + 3)
             currentIndex = index - 1
             return false
     if currentIndex is null
