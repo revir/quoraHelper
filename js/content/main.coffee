@@ -25,6 +25,7 @@ getCurrentViewIndex = ->
 
     currentIndex = null
     $views.each (index)->
+        return if this.scrollHeight is 0
         itemOffset = $(this).offset()
         if itemOffset.top is headerBottom
             currentIndex = index

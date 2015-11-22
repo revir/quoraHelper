@@ -7,7 +7,7 @@
     viewItem: '.TopicFaqQuestionCard, .layout_3col_center .pagedlist_item, .feed .pagedlist_item',
     answer: '.WriteAnswer',
     more: '.more_link',
-    comment: '.view_comments',
+    comment: '.view_comments'
   };
 
   KEY = {
@@ -34,6 +34,9 @@
     currentIndex = null;
     $views.each(function(index) {
       var itemOffset;
+      if (this.scrollHeight === 0) {
+        return;
+      }
       itemOffset = $(this).offset();
       if (itemOffset.top === headerBottom) {
         currentIndex = index;
