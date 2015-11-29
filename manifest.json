@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Quora Helper",
-    "version": "0.1",
+    "version": "0.2",
 
     "description": "This extension helps you using j/k to move around on Quora.com, and using Enter to help you open comments.",
 

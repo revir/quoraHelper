@@ -1,9 +1,10 @@
 SELECTOR =
     header: '.SiteHeader'
-    viewItem: '.TopicFaqQuestionCard, .layout_3col_center .pagedlist_item, .feed .pagedlist_item'
+    viewItem: '.TopicFaqQuestionCard, .layout_3col_center .pagedlist_item, .layout_2col_main .pagedlist_item, .feed .pagedlist_item'
     answer: '.WriteAnswer'
     more: '.more_link'
     comment: '.view_comments'
+    topicHeader: '.PinnedTopicHeader.fixable_fixed'
 
 KEY =
     j: 74
@@ -18,9 +19,12 @@ triggerMouseEvent = (node, eventType) ->
     clickEvent.initEvent(eventType, true, true)
     node.dispatchEvent(clickEvent)
 
+getHeaderHeight = ->
+    return $(SELECTOR.header).outerHeight() + $(SELECTOR.topicHeader).outerHeight()
+
 getCurrentViewIndex = ->
     $header = $(SELECTOR.header)
-    headerBottom = $header.offset().top + $header.height()
+    headerBottom = $header.offset().top + getHeaderHeight()
     $views = $(SELECTOR.viewItem)
 
     currentIndex = null
@@ -39,20 +43,25 @@ getCurrentViewIndex = ->
 
 jump = (direction)->
     return if jumping
-    $header = $(SELECTOR.header)
     $views = $(SELECTOR.viewItem)
     currentIndex = getCurrentViewIndex()
+    posTop = null
 
     if direction is 'forward'
         $target = $views.eq(currentIndex+1)
     else
         if currentIndex > 0
             $target = $views.eq(currentIndex-1)
+        else if currentIndex is 0
+            posTop = 0
 
     if $target?.offset()
+        posTop = $target.offset().top - getHeaderHeight()
+
+    if posTop?
         jumping = true
         $('html, body').animate {
-                scrollTop: $target.offset().top - $header.height()
+                scrollTop: posTop
             }, {
                 duration: 'fast',
                 complete: -> jumping = false
