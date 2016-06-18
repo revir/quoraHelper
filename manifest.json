@@ -1,23 +1,35 @@
 {
     "manifest_version": 2,
     "name": "Quora Helper",
-    "version": "0.2",
+    "version": "0.3",
 
-    "description": "This extension helps you using j/k to move around on Quora.com, and using Enter to help you open comments.",
+    "description": "This extension helps view articles and write blogs on quora.",
 
     "author": "revir.qing@gmail.com",
     "background": {
         "script": "js/background/main.js"
     },
+    "permissions": [
+          "https://*.quora.com/"
+        ],
+    "web_accessible_resources": [
+        "bower_components/jquery/dist/jquery.js",
+        "js/content/insert.js"
+    ],
     "content_scripts": [
         {
             "matches": [
-                "https://www.quora.com/*"
+                "https://*.quora.com/*"
             ],
+            "css": ["css/blog-add.css"],
             "js": [
-                "bower_components/jquery/dist/jquery.min.js",
-                "js/content/main.js"
-            ]
+                "bower_components/jquery/dist/jquery.js",
+                "bower_components/Caret.js/dist/jquery.caret.js",
+                "bower_components/underscore/underscore.js",
+                "js/content/main.js",
+                "js/content/blog.js"
+            ],
+            "run_at": "document_end"
         }
     ]
 }
