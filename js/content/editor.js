@@ -4,7 +4,7 @@
 
   $editor = $('.rteditor [contenteditable]');
 
-  if (location.pathname === '/add') {
+  if (1) {
     $('body').append('<div id="MathPreview"></div> <div id="MathBuffer" style="visibility:hidden;"></div> ');
     injectScript = function(file) {
       var defer, s;
@@ -25,13 +25,15 @@
       var $math, $target, code, offset;
       $target = $(evt.target);
       $math = $target.find('.section .math.active .content');
-      if ($math.length && $target.is('.doc')) {
+      if (evt.keyCode === 27) {
+        $('#MathPreview, #MathBuffer').hide();
+      } else if ($math.length && $target.is('.doc')) {
         code = $math.text();
         console.log('code: ', code);
         offset = $target.caret('offset');
         $('#MathPreview, #MathBuffer').show();
         $('#MathPreview, #MathBuffer').css({
-          'top': offset.top + 100
+          'top': offset.top + 120 - $(document).scrollTop()
         });
         if (code) {
           window.postMessage({

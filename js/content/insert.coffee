@@ -1,8 +1,9 @@
 console.log('inserted...')
-$.getScript("https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS_HTML,Safe").done (data, textStatus)->
+
+insertFunc = (data, textStatus)->
   MathJax.Hub.Config({
     showProcessingMessages: false,
-    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)'], ["[math]","[/math]"]] }
     })
   latexCode = null;
   Preview =
@@ -52,3 +53,8 @@ $.getScript("https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AM
         Preview.callback()
         # el.innerHTML = "$" + latex + "$"
         # MathJax.Hub.Queue ["Typeset",MathJax.Hub,el]
+
+if !window.MathJax?
+  $.getScript("https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS_HTML,Safe").done insertFunc
+else
+  insertFunc()

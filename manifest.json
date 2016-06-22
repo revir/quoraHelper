@@ -3,7 +3,7 @@
     "name": "Quora Helper",
     "version": "0.3",
 
-    "description": "This extension helps view articles and write blogs on quora.",
+    "description": "This extension helps you view articles and write blogs on quora.",
 
     "author": "revir.qing@gmail.com",
     "background": {
@@ -19,16 +19,21 @@
     "content_scripts": [
         {
             "matches": [
+                "https://*.quora.com/add"
+            ],
+            "css": ["css/editor-add.css"]
+        }, {
+            "matches": [
                 "https://*.quora.com/*"
             ],
-            "css": ["css/blog-add.css"],
             "js": [
                 "bower_components/jquery/dist/jquery.js",
                 "bower_components/Caret.js/dist/jquery.caret.js",
                 "bower_components/underscore/underscore.js",
                 "js/content/main.js",
-                "js/content/blog.js"
+                "js/content/editor.js"
             ],
+            "css": ["css/editor-latex.css"],
             "run_at": "document_end"
         }
     ]

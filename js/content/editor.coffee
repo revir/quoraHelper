@@ -1,5 +1,5 @@
 $editor = $('.rteditor [contenteditable]')
-if location.pathname == '/add'
+if 1
     $('body').append('<div id="MathPreview"></div> <div id="MathBuffer" style="visibility:hidden;"></div> ')
 
     injectScript = (file)->
@@ -29,13 +29,15 @@ if location.pathname == '/add'
     editHandler = (evt)->
         $target = $(evt.target)
         $math = $target.find('.section .math.active .content')
-        if $math.length && $target.is('.doc')
+        if (evt.keyCode == 27)  # escape key maps to keycode `27`
+            $('#MathPreview, #MathBuffer').hide()
+        else if $math.length && $target.is('.doc')
             code = $math.text()
             console.log('code: ', code)
             offset = $target.caret('offset')
             $('#MathPreview, #MathBuffer').show()
             $('#MathPreview, #MathBuffer').css({
-                'top': offset.top + 100
+                'top': offset.top + 120 - $(document).scrollTop()
                 })
             if code
                 window.postMessage({

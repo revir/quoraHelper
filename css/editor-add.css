@@ -1,0 +1,9 @@
+.rteditor .doc {
+    min-height: 500px !important;
+}
+
+
+.layout_3col_center, .layout_3col_right {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
