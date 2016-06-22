@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Quora Helper",
-    "version": "0.3",
+    "version": "0.4",
 
     "description": "This extension helps you view articles and write blogs on quora.",
 
