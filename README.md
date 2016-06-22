@@ -1,13 +1,10 @@
-# quoraHelper
-This is a chrome extension app, its release version is on [chrome webstore](https://chrome.google.com/webstore/detail/quora-helper/opifbghfjnlmobgphdnhppdoldbalffo)
+# Quora Helper
 
-This extension is really simple.
-After you install it, nothing seems happened. But when you are viewing Quora.com, which is a great website, it
-helps you use j/k to move around.
- 
-Use j to move forward to next question or answer.
-Use k to move backward to the previous one.
-Use Enter to open the comments, or open 'more', or just open the editor to write answers.
+This is a chrome extension, its release version is on [chrome webstore](https://chrome.google.com/webstore/detail/quora-helper/opifbghfjnlmobgphdnhppdoldbalffo)
 
-Hope you like it.
-Any usage or bug report would be appreciated.
+This extension help you use quora in two ways:
+
+1. use j/k to move forward or downward when you are viewing posts;
+2. preview latex math code instantly when you are writing a post.
+
+It's just so simple, if you have any idea to improve it, or if you find any bugs, don't hesitate to let me know. Thanks.
